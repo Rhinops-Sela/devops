@@ -1,5 +1,6 @@
 steps:
 - script: |
+    pwd
     mkdir -p '$(Pipeline.Workspace)/build-workspace'
   displayName: 'create workspace'
   
@@ -22,5 +23,7 @@ steps:
   displayName: 'Download webclient artifacts'
 
 - script: |
+    pwd
+    cd $(Pipeline.Workspace)
     ls
     find . -name '*Dockerfile*'
