@@ -12,17 +12,3 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-- task: DownloadPipelineArtifact@2
-  inputs:
-    buildType: 'specific'
-    project: 'f6ab42a1-9699-4b5f-a01c-747fb9656456'
-    definition: '1'
-    buildVersionToDownload: 'latestFromBranch'
-    branchName: 'refs/heads/master'
-    targetPath: '$(Pipeline.Workspace)'
