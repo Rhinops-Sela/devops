@@ -1,7 +1,7 @@
 steps:
 - script: |
     mkdir -p '$(Pipeline.Workspace)/build-workspace'
-    displayName: 'create workspace'
+  displayName: 'create workspace'
   
 - task: DownloadPipelineArtifact@2
   inputs:
