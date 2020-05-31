@@ -1,7 +1,7 @@
 steps:
 - script: |
     mkdir -p '$(Pipeline.Workspace)/build-workspace'
-  displayName: 'create workspace'
+    displayName: 'create workspace'
   
 - task: DownloadPipelineArtifact@2
   inputs:
@@ -20,3 +20,7 @@ steps:
     buildVersionToDownload: 'latest'
     targetPath: '$(Pipeline.Workspace)/build-workspace/webclient'
   displayName: 'Download webclient artifacts'
+
+- script: |
+    ls
+    find . -name '*Dockerfile*'
