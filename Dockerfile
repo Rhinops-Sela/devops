@@ -1,5 +1,4 @@
-# FROM node:12.2.0
-FROM alpine
+FROM node:12.2.0
 
 # add app
 COPY webclient/. /app/webclient/.
