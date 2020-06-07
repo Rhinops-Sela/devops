@@ -22,5 +22,9 @@ steps:
     targetPath: '$(Pipeline.Workspace)/build-workspace/webclient'
   displayName: 'Download webclient artifacts'
 
-- script: |
-    Docker build .
+- task: Docker@2
+  inputs:
+    containerRegistry: 'NoamaDockerHub'
+    repository: 'k8s-bootstrapper'
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
