@@ -2,5 +2,5 @@
 FROM alpine
 
 # add app
-# COPY build-workspace/webclient/. /app/webclient/.
-# COPY build-workspace/backend/. /app/backend/.
+COPY build-workspace/webclient/. /app/webclient/.
+COPY build-workspace/backend/. /app/backend/.
