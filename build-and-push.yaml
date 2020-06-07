@@ -23,7 +23,4 @@ steps:
   displayName: 'Download webclient artifacts'
 
 - script: |
-    pwd
-    cd $(Pipeline.Workspace)
-    ls
-    find . -name '*Dockerfile*'
+    Docker build .
