@@ -29,6 +29,11 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'NoamaDockerHub'
+    command: 'login'
+    
+- task: Docker@2
+  inputs:
+    containerRegistry: 'NoamaDockerHub'
     repository: 'k8s-bootstrapper'
     command: 'buildAndPush'
     Dockerfile: '$(Pipeline.Workspace)/build-workspace/Dockerfile'
