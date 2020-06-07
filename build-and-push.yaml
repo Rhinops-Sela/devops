@@ -32,3 +32,4 @@ steps:
     repository: 'noamasela/k8s-bootstrapper'
     command: 'buildAndPush'
     Dockerfile: '$(Pipeline.Workspace)/build-workspace/Dockerfile'
+  displayName: 'Docker build and push'
