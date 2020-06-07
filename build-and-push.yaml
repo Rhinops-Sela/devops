@@ -8,7 +8,7 @@ steps:
   inputs:
     buildType: 'specific'
     project: 'f6ab42a1-9699-4b5f-a01c-747fb9656456'
-    definition: '3'
+    definition: '5'
     buildVersionToDownload: 'latest'
     targetPath: '$(Pipeline.Workspace)/build-workspace/backend'
   displayName: 'Download backend artifacts'
