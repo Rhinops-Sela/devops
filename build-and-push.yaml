@@ -32,14 +32,6 @@ steps:
   displayName: 'Download webclient artifacts'
 
 - script: |
-    mv $(Pipeline.Workspace)/build-workspace/webclient/package_json/package.json $(Pipeline.Workspace)/build-workspace/webclient/package.json
-  displayName: 'Move package.json to artifact root'
-
-- script: |
-    mv $(Pipeline.Workspace)/build-workspace/webclient/lib_init/lib/init $(Pipeline.Workspace)/build-workspace/webclient/lib/init
-  displayName: 'Move lib/init to artifact root'
-
-- script: |
     cp $(Build.SourcesDirectory)/Dockerfile $(Pipeline.Workspace)/build-workspace/Dockerfile
   displayName: 'Copy Dockerfile to build workspace'
 
