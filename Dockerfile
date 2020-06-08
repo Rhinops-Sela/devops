@@ -3,8 +3,8 @@ FROM nginx:1.19.0
 # add app
 COPY webclient/wizard/. /usr/share/nginx/html/
 
-#COPY backend/. /app/backend/.
-#COPY components/. /app/components/.
+COPY backend/. /app/backend/.
+COPY components/. /app/components/.
 
 #Unzip
 RUN apt update && \
