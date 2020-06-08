@@ -1,7 +1,13 @@
-FROM node:12.2.0
+FROM nginx:1.19.0-alpine
 
 # add app
-COPY webclient/. /app/webclient/.
-RUN chmod 775 /app/webclient/node_modules/.bin/ng
-COPY backend/. /app/backend/.
-COPY components/. /app/components/.
+COPY webclient/wizard/. /usr/share/nginx/html/
+
+#COPY backend/. /app/backend/.
+#COPY components/. /app/components/.
+#Docker
+#AWS CLI
+#helm
+#ekscli
+#kubectl
+#tolerations
