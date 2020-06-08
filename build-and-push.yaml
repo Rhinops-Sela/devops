@@ -10,7 +10,6 @@ steps:
     project: 'f6ab42a1-9699-4b5f-a01c-747fb9656456'
     definition: '4'
     buildVersionToDownload: 'latest'
-    artifactName: 'metadata'
     targetPath: '$(Pipeline.Workspace)/build-workspace/devops'
   displayName: 'Download devops metadata artifacts'
 
