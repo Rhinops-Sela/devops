@@ -3,7 +3,17 @@ steps:
     pwd
     mkdir -p '$(Pipeline.Workspace)/build-workspace'
   displayName: 'create workspace'
-  
+
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'specific'
+    project: 'f6ab42a1-9699-4b5f-a01c-747fb9656456'
+    definition: '4'
+    buildVersionToDownload: 'latest'
+    artifactName: 'metadata'
+    targetPath: '$(Pipeline.Workspace)/build-workspace/devops'
+  displayName: 'Download devops metadata artifacts'
+
 - task: DownloadPipelineArtifact@2
   inputs:
     buildType: 'specific'
@@ -32,7 +42,7 @@ steps:
   displayName: 'Download webclient artifacts'
 
 - script: |
-    cp $(Build.SourcesDirectory)/Dockerfile $(Pipeline.Workspace)/build-workspace/Dockerfile
+    cp $(Pipeline.Workspace)/build-workspace/devops/metadata/Dockerfile $(Pipeline.Workspace)/build-workspace/Dockerfile
   displayName: 'Copy Dockerfile to build workspace'
 
 - task: Docker@2
