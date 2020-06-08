@@ -10,9 +10,9 @@ COPY components/. /app/components/.
 RUN apt update && \
     apt install unzip
 
-#Docker
-# RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
-#     sh get-docker.sh
+#Nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    apt install nodejs -y
 
 #AWS CLI
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
