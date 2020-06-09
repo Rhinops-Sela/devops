@@ -23,7 +23,8 @@ RUN curl https://get.helm.sh/helm-v3.2.2-linux-amd64.tar.gz -o helm-v3.2.2-linux
     tar -zxvf helm-v3.2.2-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/helm
 
-CMD ["sh", "-c","cd /app/backend && npm run build && nginx -g \"daemon off;\""]
 #ekscli
 #kubectl
 #tolerations
+
+CMD ["sh", "-c","cd /app/backend && npm run build && nginx -g \"daemon off;\""]
