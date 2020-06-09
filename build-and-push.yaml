@@ -22,10 +22,6 @@ steps:
     targetPath: '$(Pipeline.Workspace)/build-workspace/backend'
   displayName: 'Download backend artifacts'
 
-- script: |
-    mv $(Pipeline.Workspace)/build-workspace/backend/package_json/package.json $(Pipeline.Workspace)/build-workspace/backend/package.json
-  displayName: 'move package.json'
-
 - task: DownloadPipelineArtifact@2
   inputs:
     buildType: 'specific'
