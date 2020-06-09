@@ -31,4 +31,4 @@ RUN curl https://get.helm.sh/helm-v3.2.2-linux-amd64.tar.gz -o helm-v3.2.2-linux
 #kubectl
 #tolerations
 
-CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2-docker start /app/backend/dist/index.json && nginx -g \"daemon off;\""]
+CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2-docker start /app/backend/dist/index.js && nginx -g \"daemon off;\""]
