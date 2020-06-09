@@ -34,4 +34,6 @@ RUN curl https://get.helm.sh/helm-v3.2.2-linux-amd64.tar.gz -o helm-v3.2.2-linux
 #Exposing node port
 EXPOSE 3000
 
+ENV FORM_TEMPLATE_FILE=../assets//assets/form/template.json
+
 CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2 start /app/backend/dist/index.js && nginx -g \"daemon off;\""]
