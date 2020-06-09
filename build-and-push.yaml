@@ -20,6 +20,12 @@ resources:
     trigger: 
       branches:
       - master
+  - pipeline: Components # identifier for the pipeline resource
+    project:  k8s-bootstrapper # project for the build pipeline; optional input for current project
+    source: Rhinops-Sela.devops
+    trigger: 
+      branches:
+      - master
 steps:
 - script: |
     pwd
