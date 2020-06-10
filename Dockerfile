@@ -37,4 +37,8 @@ RUN chmod +x /app/backend/node_modules/pm2/bin/pm2
 #add components
 COPY components/. /app/components/.
 
-CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2 start /app/backend/dist/index.json && nginx -g \"daemon off;\""]
+#Exposing node port	
+EXPOSE 3000
+EXPOSE 9090
+
+CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2 start /app/backend/dist/index.js && nginx -g \"daemon off;\""]
