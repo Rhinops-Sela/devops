@@ -29,6 +29,7 @@ RUN curl --silent --location "https://github.com/weaveworks/eksctl/releases/late
 
 # add webclient
 COPY webclient/wizard/. /usr/share/nginx/html/
+ENV FORM_TEMPLATE_FILE=../assets/assets/form/template.json
 
 # add backend
 COPY backend/. /app/backend/.
