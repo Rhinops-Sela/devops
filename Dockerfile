@@ -1,22 +1,10 @@
 FROM nginx:1.19.0
 
-ENV FORM_TEMPLATE_FILE=../assets/assets/form/template.json
-
-# add app
-COPY webclient/wizard/. /usr/share/nginx/html/
-
-# add backend
-COPY backend/. /app/backend/.
-RUN chmod +x /app/backend/node_modules/pm2/bin/pm2
-
-# add components
-COPY components/. /app/components/.
-
-#Unzip
+#unzip
 RUN apt update && \
-    apt install unzip
+    apt install unzip -y
 
-#Nodejs
+#nodejs
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt install nodejs -y
 
@@ -29,12 +17,24 @@ RUN curl https://get.helm.sh/helm-v3.2.2-linux-amd64.tar.gz -o helm-v3.2.2-linux
     tar -zxvf helm-v3.2.2-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/helm
 
-#ekscli
 #kubectl
+RUN curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.16.8/2020-04-16/bin/linux/amd64/kubectl && \
+    chmod +x ./kubectl
+
+#eksctl
+RUN curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp && \
+    mv /tmp/eksctl /usr/local/bin
+
 #tolerations
 
-#Exposing node port
-EXPOSE 3000
-EXPOSE 9090
+# add webclient
+COPY webclient/wizard/. /usr/share/nginx/html/
 
-CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2 start /app/backend/dist/index.js && nginx -g \"daemon off;\""]
+# add backend
+COPY backend/. /app/backend/.
+RUN chmod +x /app/backend/node_modules/pm2/bin/pm2
+
+#add components
+COPY components/. /app/components/.
+
+CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2 start /app/backend/dist/index.json && nginx -g \"daemon off;\""]
