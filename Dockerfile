@@ -1,4 +1,4 @@
-FROM noamasela/fennec-base
+FROM noamasela/fennec-base:latest
 
 # add webclient
 COPY webclient/wizard/. /usr/share/nginx/html/
