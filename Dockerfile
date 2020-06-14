@@ -1,7 +1,7 @@
 FROM noamasela/fennec-base:latest
 
 #ENV
-ENV FORM_TEMPLATE_FILE=../dist/assets/assets/form/template.json
+ENV FORM_TEMPLATE_FILE=../assets/assets/form/template.json
 ENV COMPONENTS_ROOT=/app/components
 ENV WORKING_ROOT=/app
 
