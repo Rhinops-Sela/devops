@@ -1,8 +1,12 @@
 FROM noamasela/fennec-base:latest
 
+#ENV
+ENV FORM_TEMPLATE_FILE=/app/backend/dist/assets/assets/form/template.json
+ENV COMPONENTS_ROOT=/app/components
+ENV WORKING_ROOT=/app
+
 # add webclient
 COPY webclient/wizard/. /usr/share/nginx/html/
-ENV FORM_TEMPLATE_FILE=../assets/assets/form/template.json
 
 # add backend
 COPY backend/. /app/backend/.
