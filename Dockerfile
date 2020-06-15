@@ -13,7 +13,7 @@ COPY backend/. /app/backend/.
 RUN chmod +x /app/backend/node_modules/pm2/bin/pm2
 
 #add components
-COPY components/. /app/components/.
+COPY components/. /app/.
 
 #Exposing node port	
 EXPOSE 3000
