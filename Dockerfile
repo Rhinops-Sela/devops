@@ -1,9 +1,10 @@
 FROM noamasela/fennec-base:latest
 
 #ENV
-ENV FORM_TEMPLATE_FILE=../assets/form/template.json
+ENV MAIN_TEMPLATE_FORM=../assets/form/main.json
 ENV COMPONENTS_ROOT=/app/components
 ENV WORKING_ROOT=/app/working_root
+ENV FORM_TEMPLATES_FOLDER=../assets/templates
 
 # add webclient
 COPY webclient/wizard/. /usr/share/nginx/html/
