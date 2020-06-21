@@ -4,6 +4,7 @@ FROM noamasela/fennec-base:latest
 ENV MAIN_TEMPLATE_FORM=../assets/form/development-form.json
 ENV COMPONENTS_ROOT=/app/components
 ENV WORKING_ROOT=/app/working_root
+ENV OUTPUT_FOLDER=/app/output_folder
 ENV FORM_INPUTS_FOLDER=../assets/inputs
 ENV FORM_PAGES_FOLDER=../assets/pages
 
