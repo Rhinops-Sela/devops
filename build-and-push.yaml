@@ -72,6 +72,10 @@ steps:
     cp $(Pipeline.Workspace)/build-workspace/devops/metadata/Dockerfile $(Pipeline.Workspace)/build-workspace/Dockerfile
   displayName: 'Copy Dockerfile to build workspace'
 
+- script: |
+    cp $(Pipeline.Workspace)/build-workspace/devops/metadata/nginx.conf $(Pipeline.Workspace)/build-workspace/nginx.conf
+  displayName: 'Copy nginx.conf to build workspace'
+
 - task: Docker@2
   inputs:
     containerRegistry: 'NoamaDockerHub'
