@@ -9,7 +9,9 @@ ENV FORM_INPUTS_FOLDER=../assets/inputs
 ENV FORM_PAGES_FOLDER=../assets/pages
 
 # add webclient
-COPY webclient/wizard/. /usr/share/nginx/html/
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY webclient/wizard /usr/share/nginx/html
+
 
 # add backend
 COPY backend/. /app/backend/.
