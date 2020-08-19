@@ -1,12 +1,10 @@
 FROM noamasela/fennec-base:latest
 
 #ENV
-ENV MAIN_TEMPLATE_FORM=../assets/form/development-form.json
-ENV COMPONENTS_ROOT=/app/components
-ENV WORKING_ROOT=/app/working_root
-ENV OUTPUT_FOLDER=/app/output_folder
-ENV FORM_INPUTS_FOLDER=../assets/inputs
-ENV FORM_PAGES_FOLDER=../assets/pages
+ENV COMPONENTS_ROOT=../components
+ENV WORKING_ROOT=../working_folder
+ENV MAIN_TEMPLATE_FORM=fennec/fennec_ui_components/forms/development-form.json
+ENV FORM_TEMPLATES_FOLDER=fennec/fennec_ui_components/templates
 
 # add webclient
 COPY nginx.conf /etc/nginx/nginx.conf
