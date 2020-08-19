@@ -1,8 +1,8 @@
 FROM noamasela/fennec-base:latest
 
 #ENV
-ENV COMPONENTS_ROOT=../components
-ENV WORKING_ROOT=../working_folder
+ENV COMPONENTS_ROOT=/app/components
+ENV WORKING_ROOT=/app/working_folder
 ENV MAIN_TEMPLATE_FORM=fennec/fennec_ui_components/forms/development-form.json
 ENV FORM_TEMPLATES_FOLDER=fennec/fennec_ui_components/templates
 
