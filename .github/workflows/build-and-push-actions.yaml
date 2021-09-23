@@ -19,10 +19,9 @@ jobs:
       - name: Archive production artifacts
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.PERSONAL_TOKEN}}
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
           workflow: ci-cd-pipeline.yaml
           repo: components
-          branch: shaharblanksela-patch-1
           name: components
           path: ${{ github.workspace }}
 
