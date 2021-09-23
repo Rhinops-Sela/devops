@@ -26,10 +26,14 @@ jobs:
         # Tags override for Docker image
         tags: ${{ github.run_id }}
         # Target Docker registry
-        registry: 'noamasela/fennec-base'
+        registry: 'blancahot/fennec'
         # Location of Dockerfile, if not Dockerfile in root directory
         dockerfile: DockerfileBase
         addLatest: true
+        # Docker registry username
+        username: blancahot
+        # Docker registry password
+        password: ${{ secrets.DOCKER_PASSWORD }}
         
 
 
