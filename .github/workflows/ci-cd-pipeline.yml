@@ -1,0 +1,39 @@
+name: devops-CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+      # Publish artifacts-devops
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: metadata
+        path: metadata/
+      
+    - name: Docker Build & Push Action
+      uses: mr-smithers-excellent/docker-build-push@v5.6
+      with:
+        # Name of the Docker image
+        image: NoamaDockerHub
+        # Tags override for Docker image
+        tags: | 
+          ${{ github.run_id }}
+          latest
+        # Target Docker registry
+        registry: 'noamasela/fennec-base'
+        # Location of Dockerfile, if not Dockerfile in root directory
+        dockerfile: DockerfileBase
+
+
+
+
