@@ -15,18 +15,48 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      #download artifacts-components
-      - name: Archive production artifacts
+      - name: create workspace
+        run: |
+          pwd
+          mkdir -p "$GITHUB_WORKSPACE/build-workspace"
+      
+      - name: download artifacts-components
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
           repo: Rhinops-Sela/components
           workflow: ci-cd-pipeline.yaml
           name: components
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }}/build-workspace/components
+          
+      - name: download artifacts-backend
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          repo: Rhinops-Sela/backend
+          workflow: ci-cd-pipeline.yaml
+          name: dist,node_modules
+          path: ${{ github.workspace }}/build-workspace/backend
+          
+      - name: download artifacts-webclient
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          repo: Rhinops-Sela/webclient
+          workflow: ci-cd-pipeline.yaml
+          name: Publish wizard
+          path: ${{ github.workspace }}/build-workspace/webclient
+      
 
       - name: print artifact
         run: |
           echo "$GITHUB_WORKSPACE"
-          cd $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE/build-workspace
           ls
+          cd $GITHUB_WORKSPACE/build-workspace/components
+          ls
+          cd $GITHUB_WORKSPACE/build-workspace/backend
+          ls
+          cd $GITHUB_WORKSPACE/build-workspace/webclient
+          ls
+          
