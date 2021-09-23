@@ -22,10 +22,9 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5.6
       with:
         # Name of the Docker image
-        image: NoamaDockerHub
+        image: fennec-base
         # Tags override for Docker image
-        tags: | 
-          ${{ github.run_id }}
+        tags: ${{ github.run_id }}
         # Target Docker registry
         registry: 'noamasela/fennec-base'
         # Location of Dockerfile, if not Dockerfile in root directory
