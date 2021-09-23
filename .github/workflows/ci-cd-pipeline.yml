@@ -1,10 +1,8 @@
 name: devops-CI
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [ feature/ci-cd ]
 
 jobs:
   build:
