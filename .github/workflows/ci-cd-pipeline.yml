@@ -26,11 +26,12 @@ jobs:
         # Tags override for Docker image
         tags: | 
           ${{ github.run_id }}
-          latest
         # Target Docker registry
         registry: 'noamasela/fennec-base'
         # Location of Dockerfile, if not Dockerfile in root directory
         dockerfile: DockerfileBase
+        addLatest: true
+        
 
 
 
