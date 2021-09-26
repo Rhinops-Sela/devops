@@ -59,11 +59,11 @@ jobs:
 
       - name: Copy nginx.conf to build workspace
         run: |
-          cp ${{ github.workspace }}/build-workspace/devops/metadata/nginx.conf ${{ github.workspace }}/build-workspace/nginx.conf
+          cp ${{ github.workspace }}/build-workspace/devops/nginx.conf ${{ github.workspace }}/build-workspace/nginx.conf
       
       - name: Copy Dockerfile to build workspace
         run: |
-          cp ${{ github.workspace }}/build-workspace/devops/metadata/Dockerfile ${{ github.workspace }}/build-workspace/Dockerfile
+          cp ${{ github.workspace }}/build-workspace/devops/Dockerfile ${{ github.workspace }}/build-workspace/Dockerfile
           
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
