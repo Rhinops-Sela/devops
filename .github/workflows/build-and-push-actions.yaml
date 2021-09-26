@@ -53,7 +53,7 @@ jobs:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
           repo: Rhinops-Sela/webclient
           workflow: ci-cd-pipeline.yaml
-          name: Publish wizard
+          name: wizard
           path: ${{ github.workspace }}/build-workspace/webclient
       
 
@@ -79,6 +79,8 @@ jobs:
       - name: Print dir
         run: |
          echo "$GITHUB_WORKSPACE"
+         cd ${{ github.workspace }}/build-workspace/webclient
+         ls
 
       - name: Build and push
         id: docker_build
