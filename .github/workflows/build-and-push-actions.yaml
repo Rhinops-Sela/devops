@@ -64,7 +64,7 @@ jobs:
       - name: Copy Dockerfile to build workspace
         run: |
           cp ${{ github.workspace }}/build-workspace/devops/Dockerfile ${{ github.workspace }}/build-workspace/Dockerfile
-          cd /build-workspace
+          cd ${{ github.workspace }}/build-workspace
           ls
           
 #       - name: Set up Docker Buildx
