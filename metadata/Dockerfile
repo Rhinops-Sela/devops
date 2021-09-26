@@ -19,7 +19,9 @@ RUN chmod +x /app/backend/node_modules/pm2/bin/pm2
 COPY components/. /app/.
 
 #install fennec module
-RUN pip3 install $COMPONENTS_ROOT/fennec/
+RUN cd $COMPONENTS_ROOT \
+  && ls \
+  && pip3 install $COMPONENTS_ROOT/fennec/ 
 
 #Exposing node port	
 EXPOSE 3000
