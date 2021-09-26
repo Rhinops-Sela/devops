@@ -18,23 +18,19 @@ jobs:
         name: metadata
         path: metadata/
       
-    - name: Docker Build & Push Action
-      uses: mr-smithers-excellent/docker-build-push@v5.6
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
       with:
-        # Name of the Docker image
-        image: fennec-base
-        # Tags override for Docker image
-        tags: ${{ github.run_id }}
-        # Target Docker registry
-        registry: 'blancahot/fennec'
-        # Location of Dockerfile, if not Dockerfile in root directory
-        dockerfile: DockerfileBase
-        addLatest: true
-        # Docker registry username
         username: blancahot
-        # Docker registry password
         password: ${{ secrets.DOCKER_PASSWORD }}
         
+    - name: Build and push
+      id: ${{ github.run_id }}
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: blancahot/fennec:latest
+
 
 
 
