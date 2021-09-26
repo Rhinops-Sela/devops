@@ -54,7 +54,7 @@ jobs:
           repo: Rhinops-Sela/webclient
           workflow: ci-cd-pipeline.yaml
           name: wizard
-          path: ${{ github.workspace }}/build-workspace/webclient
+          path: ${{ github.workspace }}/build-workspace/webclient/wizard
       
 
       - name: Copy nginx.conf to build workspace
