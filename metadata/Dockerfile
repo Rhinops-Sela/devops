@@ -1,4 +1,4 @@
-FROM noamasela/fennec-base:latest
+FROM blancahot/fennec:latest
 
 #ENV
 ENV COMPONENTS_ROOT=/app/components
