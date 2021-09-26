@@ -86,6 +86,4 @@ jobs:
         with:
           push: true
           tags: blancahot/fennec:${{ github.run_id }}-${{ github.run_number }}-latest
-          file: /../../${{ github.workspace }}/build-workspace/Dockerfile
-
-
+          context: ${{ github.workspace }}/build-workspace/
