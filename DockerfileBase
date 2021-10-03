@@ -3,9 +3,11 @@ FROM nginx:1.19.0
 #unzip
 RUN apt update && \
     apt install unzip -y
-    
+
 #nodejs
-RUN curl -s http://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+RUN apt-get update && \
+    apt-get install -y gnupg2 && \
+    curl -s http://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
     sh -c "echo deb http://deb.nodesource.com/node_14.x focal main > /etc/apt/sources.list.d/nodesource.list" && \
     apt-get update && \
     apt-get install nodejs
