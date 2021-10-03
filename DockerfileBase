@@ -10,7 +10,7 @@ RUN apt-get update && \
     curl -s http://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
     sh -c "echo deb http://deb.nodesource.com/node_14.x focal main > /etc/apt/sources.list.d/nodesource.list" && \
     apt-get update && \
-    apt-get install nodejs
+    apt-get install -y nodejs
 
 #RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 #    apt -y install nodejs
