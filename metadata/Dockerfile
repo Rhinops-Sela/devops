@@ -1,16 +1,10 @@
 FROM blancahot/fennec:latest
 
-#ARGS
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_ACCESS_KEY
-
 #ENV
 ENV COMPONENTS_ROOT=/app/components
 ENV WORKING_ROOT=/app/working_folder
 ENV MAIN_TEMPLATE_FORM=fennec/fennec_ui_components/forms/development-form.json
 ENV FORM_TEMPLATES_FOLDER=fennec/fennec_ui_components/templates
-ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 # add webclient
 COPY nginx.conf /etc/nginx/nginx.conf
