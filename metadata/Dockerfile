@@ -29,6 +29,5 @@ RUN cd $COMPONENTS_ROOT \
 
 #Exposing node port	
 EXPOSE 3000
-EXPOSE 4200
 
 CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2 start /app/backend/dist/src/index.js && nginx -g \"daemon off;\""]
