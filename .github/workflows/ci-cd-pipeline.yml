@@ -1,8 +1,13 @@
 name: devops-CI
-
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the develop branch
+  push:
+    branches:
+      - develop
   pull_request:
-    branches: [ feature/ci-cd ]
+    branches:
+      - develop
 
 jobs:
   build:
