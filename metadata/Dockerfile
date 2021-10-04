@@ -1,4 +1,4 @@
-FROM blancahot/fennec:latest
+FROM blancahot/fennec-base:develop
 
 
 #ENV
