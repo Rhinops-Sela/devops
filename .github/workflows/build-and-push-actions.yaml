@@ -86,5 +86,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: blancahot/fennec:${{ github.run_id }}-${{ github.run_number }}-latest
+          tags: blancahot/fennec:${{ github.run_number }},blancahot/fennec:latest
           context: ${{ github.workspace }}/build-workspace/
