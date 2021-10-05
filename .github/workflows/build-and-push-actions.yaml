@@ -1,0 +1,95 @@
+# This is a basic workflow to help you get started with Actions
+
+name: build-and-push
+
+# Controls when the workflow will run
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the develop branch
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - main
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: create workspace
+        run: |
+          pwd
+          mkdir -p "$GITHUB_WORKSPACE/build-workspace"
+          
+      - name: download artifacts-devops
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          repo: Rhinops-Sela/devops
+          workflow: ci-cd-pipeline.yml
+          name: metadata
+          path: ${{ github.workspace }}/build-workspace/devops
+      
+      - name: download artifacts-components
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          repo: Rhinops-Sela/components
+          workflow: ci-cd-pipeline.yaml
+          path: ${{ github.workspace }}/build-workspace/components
+          
+      - name: download artifacts-backend
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          repo: Rhinops-Sela/backend
+          workflow: ci-cd-pipeline.yml
+          path: ${{ github.workspace }}/build-workspace/backend
+          
+          
+      - name: download artifacts-webclient
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          repo: Rhinops-Sela/webclient
+          workflow: ci-cd-pipeline.yaml
+          name: wizard
+          path: ${{ github.workspace }}/build-workspace/webclient/wizard
+      
+
+      - name: Copy nginx.conf to build workspace
+        run: |
+          cp ${{ github.workspace }}/build-workspace/devops/nginx.conf ${{ github.workspace }}/build-workspace/nginx.conf
+      
+      - name: Copy Dockerfile to build workspace
+        run: |
+          cp ${{ github.workspace }}/build-workspace/devops/Dockerfile ${{ github.workspace }}/build-workspace/Dockerfile
+          cd ${{ github.workspace }}/build-workspace
+          ls
+          
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: blancahot
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      - name: Print dir
+        run: |
+         echo "$GITHUB_WORKSPACE"
+         cd ${{ github.workspace }}/build-workspace/webclient
+         ls
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: blancahot/fennec:${{ github.run_number }},blancahot/fennec:latest
+          context: ${{ github.workspace }}/build-workspace/
