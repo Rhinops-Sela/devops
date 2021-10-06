@@ -1,0 +1,28 @@
+name: fennec
+deployment:
+  image:
+    registry: "blancahot" #p21d12501503001.azurecr.io
+    # registryPort: 8080
+    repository: "fennec" #rbs-devops/essence
+    pullPolicy: Always
+    pullSecrets: acr-auth
+    tag: "latest"
+  replicas: 1
+  rollingUpdate:
+    maxUnavailable: 25%
+    # maxSurge: 1
+    # progressDeadlineSeconds: 600
+    # revisionHistoryLimit: 5
+  # limits:
+  #   cpu: 2
+  #   memory: 8Gi
+
+service:
+  omitClusterIP: true
+  type: ClusterIP
+  protocol: TCP
+  ports:
+    app: 8080
+    # exporter: ???
+
+s

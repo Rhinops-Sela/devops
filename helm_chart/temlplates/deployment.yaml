@@ -1,0 +1,54 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: nginx-deployment
+#   labels:
+#     app: nginx
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: nginx
+#   template:
+#     metadata:
+#       labels:
+#         app: nginx
+#     spec:
+#       containers:
+#       - name: nginx
+#         image: nginx:1.14.2
+#         ports:
+#         - containerPort: 80
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  labels:
+    app: {{ .Values.name }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        resources: 
+          requests: 
+            # memory: {{ .Values.deployment.limits.memory }} 
+            # cpu: {{ .Values.deployment.limits.cpu }}
+          limits: 
+            # memory: {{ .Values.deployment.limits.memory }}
+            # cpu: {{ .Values.deployment.limits.cpu }}
+        image: "{{ .Values.deployment.image.registry }}/{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+        imagePullPolicy: {{ .Values.deployment.image.pullPolicy | quote }}
+        ports:
+          - name: http
+            containerPort: {{ .Values.service.ports.app }}
+            #protocol: {{ .Values.service.protocol }}
