@@ -2,8 +2,7 @@ name: devops-CI
 on:
   # Trigger the workflow on push or pull request,
   # but only for the develop branch
-  repository_dispatch:
-    types: [components_built]
+  workflow_dispatch:
   push:
     branches:
       - develop
