@@ -84,14 +84,14 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          username: blancahot
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: sm3xypro
+          password: ${{ secrets.SM3XYPRODOCKERPASSWORD }}
           
-      - name: Print dir
-        run: |
-         echo "$GITHUB_WORKSPACE"
-         cd ${{ github.workspace }}/build-workspace/webclient
-         ls
+      # - name: Print dir
+      #   run: |
+      #    echo "$GITHUB_WORKSPACE"
+      #    cd ${{ github.workspace }}/build-workspace/webclient
+      #    ls
 
       # - name: Build and push
       #   id: docker_build
@@ -106,7 +106,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: blancahot/fennec-Ui:${{ github.run_number }},blancahot/fennec-Ui:latest
+          tags: sm3xypro/fennec:Ui-${{ github.run_number }},sm3xypro/fennec:Ui-latest
           context: ${{ github.workspace }}/build-workspace/DockerfileUi
 
       - name: Build and push
@@ -114,5 +114,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: blancahot/fennec-Backend:${{ github.run_number }},blancahot/fennec-Backend:latest
+          tags: sm3xypro/fennec-backend:${{ github.run_number }},sm3xypro/fennec-base:latest
           context: ${{ github.workspace }}/build-workspace/DockerfileBackend

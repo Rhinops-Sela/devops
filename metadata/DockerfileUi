@@ -14,13 +14,11 @@ ENV AWS_DEFAULT_REGION=eu-west-2
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY webclient/wizard /usr/share/nginx/html
 
-#install fennec module
+#install fennec module // ask ilia if needed here or only on components
 RUN cd $COMPONENTS_ROOT \
   && ls \
   && pip3 install $COMPONENTS_ROOT/fennec/ 
 
-#Exposing node port	
-EXPOSE 3000
-EXPOSE 9090
+#Exposing node port	// on default ui leastening on 90
 
-CMD ["sh", "-c","/app/backend/node_modules/pm2/bin/pm2 start /app/backend/dist/src/index.js && nginx -g \"daemon off;\""]
+
