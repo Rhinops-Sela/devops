@@ -5,10 +5,7 @@ on:
   repository_dispatch:
   push:
     branches:
-      - develop
-  pull_request:
-    branches:
-      - main
+      - shaharblanksela-patch-1
 
 jobs:
   build:
