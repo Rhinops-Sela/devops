@@ -2,6 +2,7 @@ name: devops-CI
 on:
   # Trigger the workflow on push or pull request,
   # but only for the develop branch
+  repository_dispatch:
   push:
     branches:
       - develop
@@ -39,7 +40,19 @@ jobs:
         push: true
         tags: blancahot/fennec-base:${{ github.run_number }},blancahot/fennec-base:latest,blancahot/fennec-base:develop
         file: DockerfileBase
-
+        
+  workflow_run_info:
+    name: Information about the workflow run
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+    steps:
+      - name: Show Information
+        run: |
+          echo "This workflow run is triggered by ${{ github.event_name }} ."
+          echo " *****************************************************************************"
+          echo "$GITHUB_CONTEXT"
+          echo " *****************************************************************************"
 
 
 
