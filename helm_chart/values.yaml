@@ -16,7 +16,6 @@ deployment:
   # limits:
   #   cpu: 2
   #   memory: 8Gi
-
 service:
   omitClusterIP: true
   type: ClusterIP
@@ -24,5 +23,3 @@ service:
   ports:
     app: 8080
     # exporter: ???
-
-s
