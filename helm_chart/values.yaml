@@ -13,9 +13,10 @@ deployment:
     # maxSurge: 1
     # progressDeadlineSeconds: 600
     # revisionHistoryLimit: 5
-  # limits:
-  #   cpu: 2
-  #   memory: 8Gi
+  limits:
+    cpu: 1
+    memory: 2Gi
+  node: ip-10-0-140-211.eu-west-2.compute.internal
 service:
   omitClusterIP: true
   type: ClusterIP
@@ -23,3 +24,6 @@ service:
   ports:
     app: 8080
     # exporter: ???
+ingress:
+  enable: true
+  host: gal.fennec.io

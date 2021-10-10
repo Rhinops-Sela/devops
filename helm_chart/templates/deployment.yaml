@@ -41,14 +41,20 @@ spec:
       - name: {{ .Values.name }}
         resources: 
           requests: 
-            # memory: {{ .Values.deployment.limits.memory }} 
-            # cpu: {{ .Values.deployment.limits.cpu }}
+            memory: {{ .Values.deployment.limits.memory }} 
+            cpu: {{ .Values.deployment.limits.cpu }}
           limits: 
-            # memory: {{ .Values.deployment.limits.memory }}
-            # cpu: {{ .Values.deployment.limits.cpu }}
+            memory: {{ .Values.deployment.limits.memory }}
+            cpu: {{ .Values.deployment.limits.cpu }}
         image: "{{ .Values.deployment.image.registry }}/{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
         imagePullPolicy: {{ .Values.deployment.image.pullPolicy | quote }}
         ports:
           - name: http
             containerPort: {{ .Values.service.ports.app }}
             #protocol: {{ .Values.service.protocol }}
+      tolerations:
+      - key: "elk"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+        
